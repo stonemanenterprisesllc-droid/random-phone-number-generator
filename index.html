@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Random Phone Number Generator — Fake US Phone Numbers for Testing</title>
+<meta name="description" content="Generate random fake US phone numbers instantly. Choose the format, area code, and quantity — perfect for software testing, form demos, writing, and mock data.">
+<link rel="canonical" href="https://stonemanenterprisesllc-droid.github.io/random-phone-number-generator/">
+<style>
+:root{--accent:#0d9488;--accent-dark:#0f766e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;color:#1f2937;background:#f8fafc}
+header{background:var(--accent);color:#fff;padding:1rem}
+header .wrap{max-width:760px;margin:0 auto}
+header a{color:#fff;text-decoration:none;font-weight:700;font-size:1.2rem}
+main{max-width:760px;margin:0 auto;padding:1rem}
+h1{font-size:1.5rem;margin:.75rem 0 .25rem}
+.tagline{color:#6b7280;margin-bottom:1rem}
+.tool{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:.75rem}
+.row>div{display:flex;flex-direction:column}
+label{font-weight:600;margin-bottom:.25rem}
+select,input{padding:.55rem;border:2px solid #d1d5db;border-radius:8px;font-size:1rem;font-family:inherit}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:.7rem 1.5rem;font-size:1.05rem;font-weight:700;cursor:pointer}
+.btn:hover{background:var(--accent-dark)}
+.btn.alt{background:#fff;color:var(--accent);border:2px solid var(--accent);font-weight:600}
+#out{display:none;margin-top:1rem}
+#nums{font-family:ui-monospace,Consolas,monospace;font-size:1.15rem;line-height:2;background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:.75rem 1rem;user-select:all;white-space:pre-wrap}
+.note{font-size:.85rem;color:#6b7280;margin-top:.5rem}
+.copied{color:#0d9488;font-weight:700;margin-left:.75rem}
+.ad-slot{margin:1rem 0}
+article h2{margin:1.5rem 0 .5rem;font-size:1.2rem}
+article p,article li{margin:.5rem 0}
+article ul{padding-left:1.4rem}
+footer{max-width:760px;margin:2rem auto;padding:1rem;font-size:.85rem;color:#6b7280;border-top:1px solid #e5e7eb}
+footer a{color:#6b7280;margin-right:1rem}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./">Random Phone Number Generator</a></div></header>
+<main>
+<h1>Random Phone Number Generator (US)</h1>
+<p class="tagline">Instant fake phone numbers in any format — for testing, demos, mock data, and fiction.</p>
+
+<div class="tool">
+<div class="row">
+<div><label for="qty">How many</label>
+<select id="qty"><option>1</option><option selected>5</option><option>10</option><option>25</option><option>50</option><option>100</option></select></div>
+<div><label for="format">Format</label>
+<select id="format">
+<option value="paren">(555) 123-4567</option>
+<option value="dash">555-123-4567</option>
+<option value="dot">555.123.4567</option>
+<option value="plain">5551234567</option>
+<option value="intl">+1 555 123 4567</option>
+</select></div>
+<div><label for="area">Area code</label>
+<select id="area">
+<option value="random">Random</option>
+<option value="212">212 — New York, NY</option>
+<option value="310">310 — Los Angeles, CA</option>
+<option value="312">312 — Chicago, IL</option>
+<option value="305">305 — Miami, FL</option>
+<option value="415">415 — San Francisco, CA</option>
+<option value="480">480 — Phoenix, AZ</option>
+<option value="617">617 — Boston, MA</option>
+<option value="702">702 — Las Vegas, NV</option>
+<option value="713">713 — Houston, TX</option>
+<option value="206">206 — Seattle, WA</option>
+<option value="303">303 — Denver, CO</option>
+<option value="404">404 — Atlanta, GA</option>
+<option value="custom">Custom…</option>
+</select></div>
+<div id="customArea" style="display:none"><label for="areaIn">Code</label><input id="areaIn" maxlength="3" size="4" placeholder="555"></div>
+</div>
+<button class="btn" id="gen">Generate Numbers</button>
+<div id="out" aria-live="polite">
+<div id="nums"></div>
+<div style="margin-top:.6rem"><button class="btn alt" id="copy">📋 Copy All</button><span id="copiedMsg" class="copied" style="display:none">Copied!</span></div>
+<p class="note">These numbers are randomly generated samples in valid US format. They are not checked against real assignments — do not use them to contact anyone or to defeat verification systems.</p>
+</div>
+</div>
+
+<div class="ad-slot" data-ad="top"></div>
+
+<article>
+<h2>What is this random phone number generator for?</h2>
+<ul>
+<li><strong>Software testers & developers</strong> — fill forms, seed databases, and test validation with realistic US numbers in the exact format your app expects.</li>
+<li><strong>Designers & demo builders</strong> — realistic placeholder contact data for mockups, spreadsheets, and CRM screenshots.</li>
+<li><strong>Writers & filmmakers</strong> — plausible numbers for a character's business card or a prop screen.</li>
+<li><strong>Teachers</strong> — sample data for spreadsheet, database, and data-entry lessons.</li>
+</ul>
+<h2>How the numbers are generated</h2>
+<p>US phone numbers follow the North American Numbering Plan (NANP):
+<em>(NPA) NXX-XXXX</em> — a 3-digit area code, a 3-digit exchange, and a 4-digit line number.
+The first digit of both the area code and the exchange must be 2–9 (never 0 or 1). This
+generator respects those rules, so every number <em>looks</em> valid to any format checker —
+but the full 7-digit combination is random, and we make no attempt to match numbers actually
+assigned to people. Everything runs in your browser; nothing is stored or sent anywhere.</p>
+<h2>Picking a format</h2>
+<p>Use <strong>(555) 123-4567</strong> for US-facing UI mockups, <strong>5551234567</strong>
+(plain) for database seeding and CSV imports, and <strong>+1 555 123 4567</strong> (E.164-style)
+when testing international dialing or SMS APIs. The <strong>Copy All</strong> button copies
+one number per line, ready to paste into a spreadsheet.</p>
+<h2>Responsible use</h2>
+<p>Generated numbers are fictitious samples. Don't dial or text them, don't publish them as
+contact information, and don't use them to create accounts or bypass phone verification —
+that violates most services' terms and our <a href="terms.html">Terms of Use</a>. For
+guaranteed-fictional numbers in film or documentation, the classic <em>555-01XX</em> exchange
+is also a safe choice.</p>
+</article>
+
+<div class="ad-slot" data-ad="bottom"></div>
+</main>
+
+<footer>
+<p><a href="./">Home</a> <a href="about.html">About</a> <a href="privacy.html">Privacy Policy</a> <a href="terms.html">Terms of Use</a></p>
+<p>&copy; 2026 Random Phone Number Generator. All rights reserved.</p>
+<p>More free tools:
+<a href="https://stonemanenterprisesllc-droid.github.io/word-scramble-maker/">Word Scramble Maker</a>
+<a href="https://stonemanenterprisesllc-droid.github.io/sleep-cycle-calculator/">Sleep Cycle Calculator</a>
+<a href="https://stonemanenterprisesllc-droid.github.io/caffeine-calculator/">Caffeine Half-Life Calculator</a>
+<a href="https://stonemanenterprisesllc-droid.github.io/dragonborn-name-generator/">Dragonborn Name Generator</a></p>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const d29=()=>2+Math.floor(Math.random()*8), d09=()=>Math.floor(Math.random()*10);
+$('area').addEventListener('change',()=>{$('customArea').style.display=$('area').value==='custom'?'block':'none';});
+function one(){
+ let a=$('area').value;
+ if(a==='random')a=''+d29()+d09()+d09();
+ else if(a==='custom'){a=($('areaIn').value||'').replace(/\D/g,'');if(a.length!==3||a[0]==='0'||a[0]==='1')a=''+d29()+d09()+d09();}
+ const x=''+d29()+d09()+d09(), l=''+d09()+d09()+d09()+d09();
+ switch($('format').value){
+  case 'paren':return `(${a}) ${x}-${l}`;
+  case 'dash':return `${a}-${x}-${l}`;
+  case 'dot':return `${a}.${x}.${l}`;
+  case 'plain':return `${a}${x}${l}`;
+  case 'intl':return `+1 ${a} ${x} ${l}`;
+ }
+}
+$('gen').addEventListener('click',()=>{
+ const n=+$('qty').value;
+ $('nums').textContent=Array.from({length:n},one).join('\n');
+ $('out').style.display='block';
+});
+$('copy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText($('nums').textContent);}catch(e){
+  const r=document.createRange();r.selectNode($('nums'));getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy');getSelection().removeAllRanges();}
+ $('copiedMsg').style.display='inline';setTimeout(()=>$('copiedMsg').style.display='none',1500);
+});
+</script>
+</body>
+</html>

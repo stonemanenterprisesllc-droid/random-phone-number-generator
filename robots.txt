@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stonemanenterprisesllc-droid.github.io/random-phone-number-generator/sitemap.xml
